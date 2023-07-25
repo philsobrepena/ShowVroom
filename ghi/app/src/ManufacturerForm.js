@@ -24,14 +24,14 @@ function ManufacturerForm(){
 
         const data = {};
         data.name = name;
-    const manufacturerUrl = 'http://localhost:8100/api/manufacturers/';
-    const fetchConfig = {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }
+        const manufacturerUrl = 'http://localhost:8100/api/manufacturers/';
+        const fetchConfig = {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
     
     const response = await fetch(manufacturerUrl, fetchConfig);
     if (response.ok){

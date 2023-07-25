@@ -30,6 +30,12 @@ function Nav() {
               <NavLink className="nav-link" to="/manufacturers" onClick={() => window.forceUpdate()}>Manufacturers</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/technicians/create">Create Technician</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/technicians/">Technicians</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/otherLinks">otherLinks</NavLink>
             </li>
           </ul>
