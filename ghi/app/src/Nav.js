@@ -29,7 +29,6 @@ function Nav() {
             <NavLink className="nav-link" to="/automobiles/create">Create an Automobile</NavLink>
             </li>
             <li className="nav-item">
-<<<<<<< HEAD
               <NavLink className="nav-link" to="/manufacturers/create">Create Manufacturer</NavLink>
             </li>
             <li className="nav-item">
@@ -48,8 +47,6 @@ function Nav() {
               <NavLink className="nav-link" to="/appointments">Service Appointments</NavLink>
             </li>
             <li className="nav-item">
-=======
->>>>>>> main
               <NavLink className="nav-link" to="/otherLinks">otherLinks</NavLink>
             </li>
           </ul>
