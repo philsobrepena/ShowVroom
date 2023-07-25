@@ -29,7 +29,8 @@ class Appointment(models.Model):
     status = models.CharField(
         max_length=200,
         choices=STATUS_CHOICES,
-        null=True
+        null=True,
+        default='in progress'
         )
     # status = models.BooleanField(default=False)
     # status = models.CharField(max_length=200)
@@ -37,7 +38,7 @@ class Appointment(models.Model):
     customer = models.CharField(max_length=200)
     technician = models.ForeignKey(
         Technician,
-        related_name="appointments",
+        related_name="technician",
         on_delete=models.PROTECT,
     )
     id= models.AutoField(primary_key=True)
