@@ -11,14 +11,14 @@ class AutomobileVO(models.Model):
 class SalesPerson(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    employee_id = models.CharField(max_length=100)
+    employee_id = models.SmallIntegerField()
 
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
-    phone_number = models.PhoneNumberField()
+    phone_number = models.SmallIntegerField()
 
 class Sale(models.Model):
     automobile = models.ForeignKey(
