@@ -35,7 +35,7 @@ class AppointmentEncoder(ModelEncoder):
 
 # list technicians and create a technician
 @require_http_methods(["GET", "POST"])
-def api_technicians(request):
+def api_list_technicians(request):
     if request.method == "GET":
         technicians = Technician.objects.all()
         return JsonResponse(
@@ -98,7 +98,7 @@ def api_appointments(request):
             content["technician"] = technician
         except Technician.DoesNotExist:
             return JsonResponse(
-                {"message": "Technician Does not exist"}
+                {"message": "Technician Does not exist"},
                 status=400
             )
         appointment = Appointment.objects.create(**content)
