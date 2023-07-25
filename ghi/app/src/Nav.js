@@ -10,7 +10,12 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturers" onClick={() => window.forceUpdate()}>Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturers/create">Create Manufacturer</NavLink>
+            </li>
             <li className='nav-item'>
             <NavLink className="nav-link" to="/models">Models</NavLink>
             </li>
@@ -22,12 +27,6 @@ function Nav() {
             </li>
             <li className='nav-item'>
             <NavLink className="nav-link" to="/automobiles/create">Create an Automobile</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/create">Create Manufacturer</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers" onClick={() => window.forceUpdate()}>Manufacturers</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/otherLinks">otherLinks</NavLink>

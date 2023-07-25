@@ -25,11 +25,12 @@ function NewAutomobileForm(){
     const handleSumbit = async (event) => {
         event.preventDefault();
         const data = {
-            color,
-            year,
-            vin,
-            model_id,
-        }
+          color,
+          year,
+          vin,
+          model_id,
+        };
+
         const automobileUrl = 'http://localhost:8100/api/automobiles/';
         const fetchOptions = {
           method: 'post',
@@ -40,12 +41,12 @@ function NewAutomobileForm(){
         };
 
         const automobileResponse = await fetch(automobileUrl, fetchOptions);
-        if (automobileResponse.ok){
-            setColor('');
-            setYear('');
-            setVin('');
-            setModelId('');
-            setHasSignedUp(true);
+        if (automobileResponse.ok) {
+          setColor('');
+          setYear('');
+          setVin('');
+          setModelId('');
+          setHasSignedUp(true);
         }
     };
 
