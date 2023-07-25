@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
-function VehiclesList() {
+function ModelsList() {
     const [models, setVehicles] = useState([]);
 
     const fetchData = async () => {
@@ -43,4 +43,4 @@ function VehiclesList() {
     );
 }
 
-export default VehiclesList;
+export default ModelsList;
