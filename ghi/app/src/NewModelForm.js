@@ -79,9 +79,9 @@ function NewModelForm() {
         <div className="col">
           <div className="card shadow">
             <div className="card-body">
-              <form className={formClasses} onSubmit={handleSubmit} id="create-vehicle-form">
-                <h1 className="card-title">Add a New Vehicle</h1>
-                <p className="mb-3">Tell us about the vehicle</p>
+              <form className={formClasses} onSubmit={handleSubmit} id="create-model-form">
+                <h1 className="card-title">Add a New Model</h1>
+                <p className="mb-3">Tell us about the model</p>
                 <div className="row">
                   <div className="col">
                     <div className="form-floating mb-3">
@@ -112,7 +112,7 @@ function NewModelForm() {
                 <button className="btn btn-lg btn-primary">Submit!</button>
               </form>
               <div className={messageClasses} id="success-message">
-                Congratulations! You've added a new vehicle!
+                Congratulations! You've added a new model!
               </div>
             </div>
           </div>
