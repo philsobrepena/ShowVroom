@@ -7,6 +7,10 @@ from django.views.decorators.http import require_http_methods
 
 # Create your views here.
 
+class AutomobileVOEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties = ["vin", "sold"]
+
 #listsalespeopleencoder
 class ListSalespeopleEncoder(ModelEncoder):
     model = SalesPerson
@@ -20,14 +24,15 @@ class ListCustomersEncoder(ModelEncoder):
 #listsalesencoder
 class ListSalesEncoder(ModelEncoder):
     model = Sale
-    properties = ["automobile", "vin", "salesperson", "customer", "price", "id"]
+    properties = ["automobile", "salesperson", "customer", "price", "id"]
 
-    def get_extra_data(self, o):
-        return {
-            "automobile": o.auto.vin,
-            "salesperson": o.employee_id,
-            "customer": o.customer.id,
-                }
+    encoders = {
+        "automobile": AutomobileVOEncoder(),
+        "salesperson": ListSalespeopleEncoder(),
+        "customer": ListCustomersEncoder(),
+    }
+
+
 
 
 #getpostdelete list salespeople
@@ -102,7 +107,7 @@ def api_list_sales(request, id=None):
     if request.method == "GET":
         sales = Sale.objects.all()
         return JsonResponse(
-            {"sales": list(sales.values())},
+            {"sales": sales},
             encoder=ListSalesEncoder,
         )
     elif request.method == "POST":
@@ -110,9 +115,7 @@ def api_list_sales(request, id=None):
         print(content)
         ### CUSTOMER
         try:
-
-            customer_id = content["customer"]
-            customer = Customer.objects.get(id=customer_id)
+            customer = Customer.objects.get(id=content["customer"])
             content["customer"] = customer
 
 
@@ -123,31 +126,24 @@ def api_list_sales(request, id=None):
             )
         ### SALESPERSON
         try:
-            salesperson_id = content["salesperson"]
-            salesperson = SalesPerson.objects.get(employee_id=salesperson_id)
+            salesperson = SalesPerson.objects.get(employee_id=content["salesperson"])
             content["salesperson"] = salesperson
-
-#########
-            auto_vin = content["automobile"]
-            automobile = AutomobileVO.objects.get(vin=auto_vin)
-            content["automobile"] = automobile
 
         except SalesPerson.DoesNotExist:
             return JsonResponse(
                 {"message": "invalid salesperson"},
                 status=400,
             )
-        ### AUTOMOBILE
-        # try:
-        #     auto_vin = content["automobile"]
-        #     automobile = AutomobileVO.objects.get(vin=auto_vin)
-        #     content["automobile"] = automobile
+        ## AUTOMOBILE
+        try:
+            automobile = AutomobileVO.objects.get(vin=content["automobile"])
+            content["automobile"] = automobile
 
-        # except AutomobileVO.DoesNotExist:
-        #     return JsonResponse(
-        #         {"message": "invalid automobile"},
-        #         status=400,
-        #     )
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "invalid automobile"},
+                status=400,
+            )
 
         sale = Sale.objects.create(**content)
         return JsonResponse(

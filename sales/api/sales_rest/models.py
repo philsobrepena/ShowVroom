@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class AutomobileVO(models.Model):
-    import_href = models.CharField(max_length=200, unique=True)
+    import_href = models.CharField(max_length=250, null=True)
     vin = models.CharField(max_length=17, unique=True)
     sold = models.BooleanField(default=False)
 
@@ -23,7 +23,7 @@ class Customer(models.Model):
 class Sale(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="sales",
+        related_name="automobiles",
         on_delete=models.CASCADE
     )
     salesperson = models.ForeignKey(
