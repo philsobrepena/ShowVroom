@@ -1,45 +1,54 @@
-import { Link } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from "react";
+// import './manufacturerlist.css';
 
+function ManufacturerList(){
+    const [manufacturers, setManufacturers] = useState([]);
 
-function ManufacturerList(props) {
-    const [manufacturers, setManufacturers] = useState([])
-
-    const fetchData = async () =>{
-        const response = await fetch('	http://localhost:8100/api/manufacturers/')
+    const getManufacturers = async () =>{
+        const url= 'http://localhost:8100/api/manufacturers/';
+        const response = await fetch(url);
         if (response.ok){
             const data = await response.json();
-            console.log(data.manufacturers)
-            setManufacturers(data.manufacturers)
+            setManufacturers(data.manufacturers);
         }
     }
 
     useEffect(() => {
-        fetchData()
-    }, []);
+        getManufacturers();
+    }, [])
+
+    const deleteManufacturer = async (id) => {
+        const manufacturerUrl = `http://localhost:8100/api/manufacturers/${id}`;
+        const response = await fetch(manufacturerUrl, {method: "DELETE"}).then(() => {
+            getManufacturers();
+        });
+    }
+
 
     return(
-        <table className="table table-striped">
+        <table className="table table-dark table-hover table-striped">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>name</th>
+                    <th>Manufacturer Name</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                {manufacturers.map(manufacturer => {
-                    return(
-                        <tr key={manufacturer.href} >
-                            <td>{manufacturer.id}</td>
+                { manufacturers.map(manufacturer => {
+                    return (
+                        <tr key={manufacturer.id}>
                             <td>{manufacturer.name}</td>
+                            <td>
+                                <button className='btn btn-danger' onClick={() => {deleteManufacturer(manufacturer.id)}}>
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     )
                 })}
             </tbody>
         </table>
-
-    )
-
+    );
 }
 
-export default ManufacturerList
+export default ManufacturerList;
