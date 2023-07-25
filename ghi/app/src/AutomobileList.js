@@ -21,14 +21,10 @@ function AutomobileList() {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th>id</th>
+                    <th>vin</th>
                     <th>color</th>
                     <th>year</th>
-                    <th>bin</th>
-                    <th>model id</th>
                     <th>model name</th>
-                    <th>model picture_url</th>
-                    <th>manufacturer id</th>
                     <th>manufacturer name</th>
                     <th>sold</th>
                 </tr>
@@ -37,16 +33,10 @@ function AutomobileList() {
                 {autos.map(auto => {
                     return (
                         <tr key={auto.id}>
-                            <td>{auto.id}</td>
+                            <td>{auto.vin}</td>
                             <td>{auto.color}</td>
                             <td>{auto.year}</td>
-                            <td>{auto.bin}</td>
-                            <td>{auto.model.id}</td>
                             <td>{auto.model.name}</td>
-                            <td>
-                                <img src={auto.model.picture_url} alt={auto.model.name} />
-                            </td>
-                            <td>{auto.model.manufacturer.id}</td>
                             <td>{auto.model.manufacturer.name}</td>
                             <td>{auto.sold ? 'Yes' : 'No'}</td>
                         </tr>

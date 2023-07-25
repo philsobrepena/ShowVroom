@@ -21,24 +21,20 @@ function VehiclesList() {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th>id</th>
                     <th>name</th>
+                    <th>manufacturer</th>
                     <th>picture_url</th>
-                    <th>manufacturer id</th>
-                    <th>manufacturer name</th>
                 </tr>
             </thead>
             <tbody>
                 {models.map(model => {
                     return (
                         <tr key={model.id}>
-                            <td>{model.id}</td>
                             <td>{model.name}</td>
+                            <td>{model.manufacturer.name}</td>
                             <td>
                                 <img src={model.picture_url}/>
                             </td>
-                            <td>{model.manufacturer.id}</td>
-                            <td>{model.manufacturer.name}</td>
                         </tr>
                     );
                 })}
