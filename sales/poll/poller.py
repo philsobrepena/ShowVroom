@@ -28,8 +28,8 @@ def poll(repeat=True):
                         "sold", automobile["sold"],
                     }
                 )
+            print("automobile found")
 
-            pass
         except Exception as e:
             print(e, file=sys.stderr)
 
