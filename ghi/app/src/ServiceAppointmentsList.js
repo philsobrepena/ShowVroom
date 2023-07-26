@@ -86,6 +86,8 @@ function AppointmentsList(){
                     <th>Technician</th>
                     <th>Reason</th>
                     <th>Status</th>
+                    <th>Finish</th>
+                    <th>Cancel</th>
                 </tr>
             </thead>
             <tbody>
