@@ -21,16 +21,14 @@ function SalesList() {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th>Automobile VIN</th>
-                    <th>Sold</th>
                     <th>Salesperson First Name</th>
                     <th>Salesperson Last Name</th>
                     <th>Salesperson Employee ID</th>
                     <th>Customer First Name</th>
                     <th>Customer Last Name</th>
-                    <th>Customer Address</th>
-                    <th>Customer Phone Number</th>
+                    <th>Automobile VIN</th>
                     <th>Price</th>
+                    <th>Sold</th>
                     <th>ID</th>
                 </tr>
             </thead>
@@ -38,16 +36,14 @@ function SalesList() {
                 {sales.map(sale => {
                     return (
                         <tr key={sale.id}>
-                            <td>{sale.automobile.vin}</td>
-                            <td>{sale.automobile.sold ? 'Yes' : 'No'}</td>
                             <td>{sale.salesperson.first_name}</td>
                             <td>{sale.salesperson.last_name}</td>
                             <td>{sale.salesperson.employee_id}</td>
                             <td>{sale.customer.first_name}</td>
                             <td>{sale.customer.last_name}</td>
-                            <td>{sale.customer.address}</td>
-                            <td>{sale.customer.phone_number}</td>
+                            <td>{sale.automobile.vin}</td>
                             <td>{sale.price}</td>
+                            <td>{sale.automobile.sold ? 'Yes' : 'No'}</td>
                             <td>{sale.id}</td>
                         </tr>
                     );
