@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 function ManufacturerForm() {
   const [name, setName] = useState('');
-  const [hasSignedUp, setHasSignedUp] = useState(false);
 
   const handleManufacturerNameChange = (event) => {
     const value = event.target.value;
