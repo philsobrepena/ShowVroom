@@ -63,7 +63,25 @@ function NewSaleForm() {
       setCustomer('');
       setPrice('');
       setHasCreatedSale(true);
+      /////// on submit change sold trait of automobile instance to true
+      const updateUrl = `http://localhost:8100/api/automobiles/${automobile}/`;
+      const updateData = {
+      ...automobile,
+      sold: true,
+
     }
+    ////// put request to update automobile data
+    const updateOptions = {
+      method: 'put',
+      body: JSON.stringify(updateData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    await fetch(updateUrl, updateOptions);
+  }
+
+
   };
 
   const handleAutomobileChange = (event) => {
@@ -89,6 +107,8 @@ function NewSaleForm() {
     formClasses = 'd-none';
   }
 
+  const unsoldAutomobiles = automobiles.filter((automobile) => !automobile.sold);
+
   return (
     <div className="my-5 container">
       <div className="row">
@@ -110,7 +130,7 @@ function NewSaleForm() {
                         required
                       >
                         <option value="">Choose an automobile</option>
-                        {automobiles.map((automobile) => (
+                        {unsoldAutomobiles.map((automobile) => (
                           <option key={automobile.vin} value={automobile.vin}>
                             {automobile.vin}
                           </option>
