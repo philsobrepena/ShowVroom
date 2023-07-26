@@ -108,5 +108,5 @@ function AppointmentsList(){
         </table>
     );
 }
-
+// https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/
 export default AppointmentsList;

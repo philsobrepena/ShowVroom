@@ -30,7 +30,7 @@ class Appointment(models.Model):
         max_length=200,
         choices=STATUS_CHOICES,
         null=True,
-        default='in progress'
+        default='IN_PROGRESS_STATUS'
         )
     # status = models.BooleanField(default=False)
     # status = models.CharField(max_length=200)
