@@ -11,6 +11,9 @@ function ManufacturerList(){
             const data = await response.json();
             setManufacturers(data.manufacturers);
         }
+        else{
+            console.error(response);
+        }
     }
 
     useEffect(() => {

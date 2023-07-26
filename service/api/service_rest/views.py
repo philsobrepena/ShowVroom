@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from common.json import ModelEncoder
-from .models import Technician, Appointment
+from .models import Technician, Appointment, AutomobileVO
 from django.views.decorators.http import require_http_methods
 import json
 
@@ -25,6 +25,7 @@ class AppointmentEncoder(ModelEncoder):
         "vin",
         "customer",
         "technician",
+        "vip",
         "id",
     ] 
     encoders= {
@@ -118,6 +119,11 @@ def api_list_appointments(request):
                 {"message": "Technician Does not exist"},
                 status=400
             )
+        try:
+            is_vip = AutomobileVO.objects.get(vin=content["vin"])
+            content["vip"] = True
+        except AutomobileVO.DoesNotExist:
+            content["vip"] = False
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             appointment,
@@ -125,6 +131,7 @@ def api_list_appointments(request):
             safe=False,
             # status=200
         )
+        
 #  specific appointment: show details, delete, & update
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_show_appointment(request, id):
