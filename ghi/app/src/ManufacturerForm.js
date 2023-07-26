@@ -24,7 +24,6 @@ function ManufacturerForm() {
     const response = await fetch(manufacturerUrl, fetchConfig);
     if (response.ok) {
       setName('');
-      setHasSignedUp(true);
     }
   };
 
