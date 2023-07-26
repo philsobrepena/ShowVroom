@@ -42,3 +42,4 @@ class Appointment(models.Model):
         on_delete=models.PROTECT,
     )
     id= models.AutoField(primary_key=True)
+    vip = models.BooleanField(default=False)

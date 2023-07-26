@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import './manufacturerlist.css';
 
-function AppointmentsList(){
+function HistoryList(){
     const [appointments, setAppointments] = useState([]);
     const [autos, setAutos] = useState([])
     const fetchAutomobiles = async () =>{
@@ -33,46 +33,8 @@ function AppointmentsList(){
         fetchAutomobiles();
     }, [])
 
-    const handleStatusChange = async (event) =>{
-        event.preventDefault();
-        const value = event.target.value;
-        setAppointments(value);
-    };
-    
 
 
-    // change this to canceled or finished
-    const handleFinish = async (id) => {
-        const finishUrl = `http://localhost:8080/api/appointments/${id}/finish/`;
-        const fetchOptions = {
-            method: "PUT",
-            headers:{'Content-Type': 'application/json'},
-
-        }
-        const response = await fetch(finishUrl, fetchOptions).then(() => {
-            fetchAppointments();
-        });
-        // if (response.ok){
-        //     console.log("message: status updated to finished")
-        //     fetchAppointments();
-        // }
-        
-    };
-    const handleCancel = async (id) => {
-        const cancelUrl = `http://localhost:8080/api/appointments/${id}/cancel/`
-        const fetchOptions = {
-            method: "PUT",
-            headers:{'Content-Type': 'application/json'},
-
-        }
-        const response = await fetch(cancelUrl, fetchOptions).then(() => {
-            fetchAppointments();
-        });
-        // if (response.ok){
-        //     console.log("message: status updated to canceled")
-        //     // fetchAppointments();
-        //     }
-};
     
 
     return(
@@ -99,8 +61,7 @@ function AppointmentsList(){
                             <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                             <td>{appointment.reason}</td>
                             <td>{appointment.status}</td>
-                            <td><button name="finish"  onClick={() => handleFinish(`${appointment.id}`)}>Finish?</button></td>
-                            <td><button name="cancel"  onClick={() => handleCancel(`${appointment.id}`)}>Cancel??</button></td>
+
                         </tr>
                     )
                 })}
@@ -109,4 +70,4 @@ function AppointmentsList(){
     );
 }
 
-export default AppointmentsList;
+export default HistoryList;
