@@ -29,7 +29,7 @@ function Nav() {
               <NavLink className="nav-link" to="/manufacturers/create">Create Manufacturer</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers" onClick={() => window.forceUpdate()}>Manufacturers</NavLink>
+              <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/technicians/create">Create Technician</NavLink>
