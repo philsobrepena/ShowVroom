@@ -25,6 +25,7 @@ function ManufacturerForm() {
     if (response.ok) {
       setName('');
     }
+
   };
 
   return (
