@@ -1,6 +1,8 @@
 # CarCar
-Working Name CarCar is an application for managing the logistics of a car dealership. Inventory, sales, and services are managed with this applicatin. 
-Team: 18
+Working Name CarCar is an application for managing the logistics of a car dealership. Inventory, sales, and services are managed within this application.
+
+
+Team:
 
 Hung Hoang - Automobile Service
 Phil Sobrepena - Automobile Sales
@@ -9,9 +11,7 @@ Phil Sobrepena - Automobile Sales
 
 CarCar is an application that contains 3 microservices that integrate with each other.
 
-Inventory
-Services
-Sales
+Inventory | Services | Sales
 
 Below is a diagram of their relationship to one another.
 
@@ -26,8 +26,8 @@ Explain your models and integration with the inventory
 microservice, here.
 
 Approach: I will create the django models in service_rest, create the necessary Value Objects (VO)
-Services interacts with the inventory microservice and database to populate the web page with relevant data. This includes appointments, technicians, and  Automobile/VIN data. 
-Within this microservice you can create,read/get, update, and delete technicians and appointments. 
+Services interacts with the inventory microservice and database to populate the web page with relevant data. This includes appointments, technicians, and  Automobile/VIN data.
+Within this microservice you can create,read/get, update, and delete technicians and appointments.
 
 ## Sales microservice
 
@@ -207,12 +207,41 @@ In order for an Automobile to be created, a VehicleModel must be created, and in
 
 If objects are not created in this order, the create forms cannot be properly filled out.
 
+| Manufacturer -> VehicleModel -> Automobile |
+
 Here is a diagram simplifying that relationship.
 ```
 | Manufacturer -> VehicleModel -> Automobile |
 ```
 
-The Sales and Service APIS require Automobile data in order to process their requests. Data from Automobiles in the Inventory are sent to each microservice every 60 seconds through a poller.
+The Sales and Service APIs require Automobile data in order to process their requests. Data from Automobiles in the Inventory are sent to each microservice every 60 seconds through a poller.
+
+
+Below are examples of the list and create pages for the Inventory API
+
+List Manufacturers:
+
+![Img](ghi/app/public/list-manufacturers.png)
+
+Create a Manufacturer:
+
+![Img](ghi/app/public/create-a-manufacturer.png)
+
+List Models:
+
+![Img](ghi/app/public/list-models.png)
+
+Create a Model:
+
+![Img](ghi/app/public/create-a-model.png)
+
+List Automobiles:
+
+![Img](ghi/app/public/list-automobiles.png)
+
+Create an Automobile:
+
+![Img](ghi/app/public/create-an-automobile.png)
 
 
 ### Service API
@@ -220,7 +249,7 @@ The Sales and Service APIS require Automobile data in order to process their req
  The Service microservice deals with all the logistics of bringing in your car to the dealership for repairs or maintenance.
 Vehicles sold by this dealership will be tracked as VIP and will get special amenities! Amenities include a prioritized allocation of new brand new models with minimal Adjusted Dealer Markups.
 
-The Service API lies in the url pattern http://localhost:8080/api/ and manages technicians and services. 
+The Service API lies in the url pattern http://localhost:8080/api/ and manages technicians and services.
 
 ### Technicians
 Use this format to interact with Technicians:
@@ -245,7 +274,7 @@ Example:
 			"id": 1
 		},
     ]
-}    
+}
 ```
 
 TECHNICIAN DETAIL: Sending a GET request to this endpoint will return a detailed view of all a technician by id. Example below:
@@ -279,14 +308,14 @@ Example Output:
 }
 
 ```
-DELETE A TECHNICAN: Sending a DELETE request to this endpoint will delete an existing technician. Use id=<int:pk> to specify which technician. 
+DELETE A TECHNICAN: Sending a DELETE request to this endpoint will delete an existing technician. Use id=<int:pk> to specify which technician.
 http://localhost:8080/api/technicians/<int:pk>/
 
-Make sure your data inputs match the above examples or else you will get errors. 
+Make sure your data inputs match the above examples or else you will get errors.
 
 
 ### Service Appointments
-Note: date_time fields MUST be in this format: "2023-04-20T14:39:00+00:00". 
+Note: date_time fields MUST be in this format: "2023-04-20T14:39:00+00:00".
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
 | List service appointments | GET | http://localhost:8080/api/serviceappointments/
@@ -373,12 +402,44 @@ Output:
 }
 ```
 
-DELETE SERVICE APPOINTMENT: Sending a DELETE request to http://localhost:8080/api/serviceappointments/<int:id>/ will delete the specified service appointment. For example, if we wanted to delete the previously created service appointment above we would use 39-<int:id> at the end of the url to do so. 
+DELETE SERVICE APPOINTMENT: Sending a DELETE request to http://localhost:8080/api/serviceappointments/<int:id>/ will delete the specified service appointment. For example, if we wanted to delete the previously created service appointment above we would use 39-<int:id> at the end of the url to do so.
 
 Thanks for reading!
 ********************************************************************
 
 ### Sales API
+
+The Sales API allows the user to view lists and create objects.
+
+The Customers View
+
+![Img](ghi/app/public/customers-view.png)
+
+Add a Customer
+
+![Img](ghi/app/public/add-a-customer.png)
+
+The Salespeople View
+
+![Img](ghi/app/public/salespeople-view.png)
+
+Add a Salesperson
+
+![Img](ghi/app/public/add-a-salesperson.png)
+
+The Sales View
+
+![Img](ghi/app/public/sales-view.png)
+
+Sales by Salesperson View
+
+![Img](ghi/app/public/sales-by-salesperson-view.png)
+
+Add a Sale
+
+![Img](ghi/app/public/create-a-sale.png)
+
+
 Endpoints for GET | POST | DELETE :
 
 **NOTE** delete requests require "/<id>" added to the end of the request path.
@@ -395,15 +456,61 @@ below is an example for a customer POST request (create a customer) with the pro
 	"phone_number": "4154154155"
 }
 
+here is an example of a customer GET response with the proper json format:
+
+{
+	"customers": [
+		{
+			"first_name": "Frank",
+			"last_name": "Stein",
+			"address": "123 Sesame Street",
+			"phone_number": "4154154154",
+			"id": 1
+		},
+		{
+			"first_name": "Frankie",
+			"last_name": "Steinberger",
+			"address": "1234 Sesame Street",
+			"phone_number": "4154154155",
+			"id": 3
+		}
+	]
+}
+
 salespeople:
 http://localhost:8090/api/salespeople/
 
-below is an example for a saleperson POST request (create a salesperson) with the proper json format:
+below is an example for a salespeople POST request (create a salesperson) with the proper json format:
 
 {
 	"first_name": "Frank",
 	"last_name": "Stein",
 	"employee_id": "2"
+}
+
+here is an example for a salepeople GET response with the proper json format:
+
+{
+	"salespeople": [
+		{
+			"id": 1,
+			"first_name": "Phil",
+			"last_name": "Sobrepena",
+			"employee_id": 1
+		},
+		{
+			"id": 3,
+			"first_name": "John",
+			"last_name": "Johnson",
+			"employee_id": 4
+		},
+		{
+			"id": 4,
+			"first_name": "Jill",
+			"last_name": "Jillson",
+			"employee_id": 123
+		}
+	]
 }
 
 sales:
@@ -416,6 +523,52 @@ below is an example for a sales POST request (create a sale) with the proper jso
 	"salesperson": 1,
 	"customer": 3,
 	"price": "10000"
+}
+
+here is an example of a sales GET response with the proper json format:
+{
+	"sales": [
+		{
+			"automobile": {
+				"vin": "1C3CC5FB2AN120174",
+				"sold": true
+			},
+			"salesperson": {
+				"first_name": "Phil",
+				"last_name": "Sobrepena",
+				"employee_id": 1
+			},
+			"customer": {
+				"first_name": "Frankie",
+				"last_name": "Steinberger",
+				"address": "1234 Sesame Street",
+				"phone_number": "4154154155",
+				"id": 3
+			},
+			"price": 10000,
+			"id": 5
+		},
+		{
+			"automobile": {
+				"vin": "2D4CC5FB2AN120222",
+				"sold": true
+			},
+			"salesperson": {
+				"first_name": "Phil",
+				"last_name": "Sobrepena",
+				"employee_id": 1
+			},
+			"customer": {
+				"first_name": "Frank",
+				"last_name": "Stein",
+				"address": "123 Sesame Street",
+				"phone_number": "4154154154",
+				"id": 1
+			},
+			"price": 20000,
+			"id": 6
+		}
+	]
 }
 
 
@@ -431,9 +584,9 @@ the sale model uses foreignkey relationships to the respective models and utiliz
 
 
 **SERVICES VALUE OBJECT**
-The services microservice has 3 models: Technician, AutomobileVO, Appointment, The Value Object in the Services Microservice is AutomobileVO, which uses a poller to get automobile data from the Inventory. 
+The services microservice has 3 models: Technician, AutomobileVO, Appointment, The Value Object in the Services Microservice is AutomobileVO, which uses a poller to get automobile data from the Inventory.
 
-The services poller automatically polls the inventory microservice every 60 seconds for data to ensure all data is updated. 
+The services poller automatically polls the inventory microservice every 60 seconds for data to ensure all data is updated.
 
 **SALES VALUE OBJECT**
 The Value Object in the Sales Microservice is the AutomobileVO, which uses a poller to get automobile data from the Inventory.
