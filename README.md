@@ -430,8 +430,10 @@ Without this data the sale form cannot be properly submitted.
 the sale model uses foreignkey relationships to the respective models and utilizes a dropdown menu populated off of the existing id numbers created for the instances of salesperson and customer. The VIN number is a unique idenitifier that is used to access a particular vehicle in the inventory.
 
 
-## Value Objects
+**SERVICES VALUE OBJECT**
+The services microservice has 3 models: Technician, AutomobileVO, Appointment, The Value Object in the Services Microservice is AutomobileVO, which uses a poller to get automobile data from the Inventory. 
 
+The services poller automatically polls the inventory microservice every 60 seconds for data to ensure all data is updated. 
 
 **SALES VALUE OBJECT**
 The Value Object in the Sales Microservice is the AutomobileVO, which uses a poller to get automobile data from the Inventory.
