@@ -16,9 +16,8 @@ Sales
 Below is a diagram of their relationship to one another.
 
  *******************
-ghi/app/public/CarCar-Diagram.png
+![Img](/ghi/app/public/CarCar-Diagram.png)
  ********************
-
 
 
 ## Service microservice
@@ -169,24 +168,24 @@ Delete a specific automobile	DELETE	http://localhost:8100/api/automobiles/:vin/
 
 List technicians	                    GET	    http://localhost:8080/api/technicians/
 Create a technician	                    POST	http://localhost:8080/api/technicians/
-Delete a specific technician	        DELETE	http://localhost:8080/api/technicians/:id
+Delete a specific technician	        DELETE	http://localhost:8080/api/technicians/:id/
 List appointments	                    GET	    http://localhost:8080/api/appointments/
 Create an appointment	                POST	http://localhost:8080/api/appointments/
-Delete an appointment	                DELETE	http://localhost:8080/api/appointments/:id
-Set appointment status to "canceled"	PUT	    http://localhost:8080/api/appointments/:id/cancel
-Set appointment status to "finished"	PUT	    http://localhost:8080/api/appointments/:id/finish
+Delete an appointment	                DELETE	http://localhost:8080/api/appointments/:id/
+Set appointment status to "canceled"	PUT	    http://localhost:8080/api/appointments/:id/cancel/
+Set appointment status to "finished"	PUT	    http://localhost:8080/api/appointments/:id/finish/
 
 ---AUTOMOBILES---
 
 List salespeople	            GET	    http://localhost:8090/api/salespeople/
 Create a salesperson	        POST	http://localhost:8090/api/salespeople/
-Delete a specific salesperson	DELETE	http://localhost:8090/api/salespeople/:id
+Delete a specific salesperson	DELETE	http://localhost:8090/api/salespeople/:id/
 List customers	                GET	    http://localhost:8090/api/customers/
 Create a customer	            POST	http://localhost:8090/api/customers/
-Delete a specific customer	    DELETE	http://localhost:8090/api/customers/:id
+Delete a specific customer	    DELETE	http://localhost:8090/api/customers/:id/
 List sales	                    GET	    http://localhost:8090/api/sales/
 Create a sale	                POST	http://localhost:8090/api/sales/
-Delete a sale	                DELETE	http://localhost:8090/api/sales/:id
+Delete a sale	                DELETE	http://localhost:8090/api/sales/:id/
 
 
 ### Inventory API (Optional)
@@ -209,10 +208,9 @@ In order for an Automobile to be created, a VehicleModel must be created, and in
 If objects are not created in this order, the create forms cannot be properly filled out.
 
 Here is a diagram simplifying that relationship.
-
+```
 | Manufacturer -> VehicleModel -> Automobile |
-
-end of diagram.
+```
 
 The Sales and Service APIS require Automobile data in order to process their requests. Data from Automobiles in the Inventory are sent to each microservice every 60 seconds through a poller.
 
@@ -378,6 +376,7 @@ Output:
 DELETE SERVICE APPOINTMENT: Sending a DELETE request to http://localhost:8080/api/serviceappointments/<int:id>/ will delete the specified service appointment. For example, if we wanted to delete the previously created service appointment above we would use 39-<int:id> at the end of the url to do so. 
 
 Thanks for reading!
+********************************************************************
 
 ### Sales API
 Endpoints for GET | POST | DELETE :
