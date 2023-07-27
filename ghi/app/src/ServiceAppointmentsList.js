@@ -21,8 +21,11 @@ function AppointmentsList(){
         const response = await fetch('http://localhost:8080/api/appointments/');
         if (response.ok){
             const apptData = await response.json();
+            // const status = apptData.appointments.status;
             // console.log("fetch appointments", data);
             const inProgress = apptData.appointments.filter(appt => appt.status==="in progress")
+            // const inProgress = apptData.appointments.filter(status==="in progress")
+
             // console.log('inProgress', inProgress);
             setAppointments(inProgress)
         }

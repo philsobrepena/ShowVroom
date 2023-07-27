@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.table img {
+  width: 1080px;
+  height: auto;
+  width: auto,
+}
+
+.jumbotron {
+text-align: center;
+margin-top: 50px;
+}
+
+.jumbotron h1 {
+margin-bottom: 40px;
+}
+
+.btn-lg {
+display: block;
+margin: 40px auto;
+}
+
+
+@media (min-width: 992px) {
+.table-custom {
+  width: 80%;
+  margin: 20px auto;
+}
+}
+
+
+@media (max-width: 991.98px) {
+.table-custom {
+  width: 100%;
+}
+}
+
+
+.table-custom {
+text-align: center;
+vertical-align: middle;
+}

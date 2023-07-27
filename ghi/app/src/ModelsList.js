@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-
+import './index.css';
 function ModelsList() {
     const [models, setVehicles] = useState([]);
 
@@ -21,9 +21,9 @@ function ModelsList() {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th>name</th>
-                    <th>manufacturer</th>
-                    <th>picture</th>
+                    <th>Name</th>
+                    <th>Manufacturer</th>
+                    <th>Picture</th>
                 </tr>
             </thead>
             <tbody>

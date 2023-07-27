@@ -15,7 +15,7 @@ function HistoryList(){
             const autoData = await response.json();
             setAutos(autoData.automobiles);
             
-            console.log("fetch automobiles", autoData);
+            // console.log("fetch automobiles", autoData);
         }
         else{
             console.error(response);
@@ -81,7 +81,7 @@ function HistoryList(){
         <div className="my-5 container">
             <div className="form-floating mb-3">
                 <form onSubmit={submit} id="search-vin-form">
-                    <input onChange={handleSearch} placeholder="Search VIN" type="text" id="search" name="search" className="form-control" />
+                    <input value={search} onChange={handleSearch} placeholder="Search VIN" type="text" id="search" name="search" className="form-control" />
                     {/* deleted *required* up above: submitting an empty search brings up the whole list again, no refresh needed */}
                     <label htmlFor="search"></label>
                     <button className="btn btn-md btn-primary">Search VIN</button>
