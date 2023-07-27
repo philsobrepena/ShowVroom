@@ -21,9 +21,9 @@ function ModelsList() {
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th>name</th>
-                    <th>manufacturer</th>
-                    <th>picture_url</th>
+                    <th>Name</th>
+                    <th>Manufacturer</th>
+                    <th>Picture</th>
                 </tr>
             </thead>
             <tbody>
