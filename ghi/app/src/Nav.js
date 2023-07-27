@@ -29,31 +29,31 @@ function Nav() {
             <NavLink className="nav-link" to="/automobiles/create">Create an Automobile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/technicians/create">Create Technician</NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink className="nav-link" to="/technicians/">Technicians</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments/create">Create a Service Appointment</NavLink>
+              <NavLink className="nav-link" to="/technicians/create">Create Technician</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/appointments">Service Appointments</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/appointments/create">Create a Service Appointment</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/appointments/history">Service History</NavLink>
-            </li>
-            <li className='nav-item'>
-            <NavLink className="nav-link" to="/salespeople">Salespeople</NavLink>
-            </li>
-            <li className='nav-item'>
-            <NavLink className="nav-link" to="/salespeople/create">Add a Salesperson</NavLink>
             </li>
             <li className='nav-item'>
             <NavLink className="nav-link" to="/customers">Customers</NavLink>
             </li>
             <li className='nav-item'>
             <NavLink className="nav-link" to="/customers/create">Add a Customer</NavLink>
+            </li>
+            <li className='nav-item'>
+            <NavLink className="nav-link" to="/salespeople">Salespeople</NavLink>
+            </li>
+            <li className='nav-item'>
+            <NavLink className="nav-link" to="/salespeople/create">Add a Salesperson</NavLink>
             </li>
             <li className='nav-item'>
             <NavLink className="nav-link" to="/sales">Sales</NavLink>

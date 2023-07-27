@@ -19,7 +19,7 @@ function ManufacturerForm(){
                 'Content-Type': 'application/json',
             },
         }
-    
+
         const response = await fetch(manufacturerUrl, fetchConfig);
         if (response.ok){
             const newManufacturer = await response.json();
@@ -34,11 +34,11 @@ function ManufacturerForm(){
                     <h1>Create a new Manufacturer</h1>
                     <form onSubmit={handleSubmit} id="create-manufacturer-form">
                     <div className="form-floating mb-3">
-                        <input value={name} 
+                        <input value={name}
                         onChange={handleManufacturerNameChange}
-                        placeholder="Name" 
-                        required type="text" 
-                        name="name" id="name" 
+                        placeholder="Name"
+                        required type="text"
+                        name="name" id="name"
                         className="form-control"/>
                         <label htmlFor="name">Name</label>
                     </div>
