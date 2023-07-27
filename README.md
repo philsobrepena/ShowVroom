@@ -1,6 +1,8 @@
 # CarCar
-Working Name CarCar is an application for managing the logistics of a car dealership. Inventory, sales, and services are managed with this applicatin.
-Team: 18
+Working Name CarCar is an application for managing the logistics of a car dealership. Inventory, sales, and services are managed within this application.
+
+
+Team:
 
 Hung Hoang - Automobile Service
 Phil Sobrepena - Automobile Sales
@@ -204,9 +206,42 @@ Automobiles
 In order for an Automobile to be created, a VehicleModel must be created, and in order for a VehicleModel to be created, a Manufacturer must be created.
 
 If objects are not created in this order, the create forms cannot be properly filled out.
+
 | Manufacturer -> VehicleModel -> Automobile |
 
-ghi/app/public/create-an-automobile.png
+Here is a diagram simplifying that relationship.
+```
+| Manufacturer -> VehicleModel -> Automobile |
+```
+
+The Sales and Service APIs require Automobile data in order to process their requests. Data from Automobiles in the Inventory are sent to each microservice every 60 seconds through a poller.
+
+
+Below are examples of the list and create pages for the Inventory API
+
+List Manufacturers:
+
+![Img](ghi/app/public/list-manufacturers.png)
+
+Create a Manufacturer:
+
+![Img](ghi/app/public/create-a-manufacturer.png)
+
+List Models:
+
+![Img](ghi/app/public/list-models.png)
+
+Create a Model:
+
+![Img](ghi/app/public/create-a-model.png)
+
+List Automobiles:
+
+![Img](ghi/app/public/list-automobiles.png)
+
+Create an Automobile:
+
+![Img](ghi/app/public/create-an-automobile.png)
 
 
 ### Service API
@@ -378,31 +413,31 @@ The Sales API allows the user to view lists and create objects.
 
 The Customers View
 
-ghi/app/public/customers-view.png
+![Img](ghi/app/public/customers-view.png)
 
 Add a Customer
 
-ghi/app/public/add-a-customer.png
+![Img](ghi/app/public/add-a-customer.png)
 
 The Salespeople View
 
-ghi/app/public/salespeople-view.png
+![Img](ghi/app/public/salespeople-view.png)
 
 Add a Salesperson
 
-ghi/app/public/add-a-salesperson.png
+![Img](ghi/app/public/add-a-salesperson.png)
 
 The Sales View
 
-ghi/app/public/sales-view.png
+![Img](ghi/app/public/sales-view.png)
 
 Sales by Salesperson View
 
-ghi/app/public/sales-by-salesperson-view.png
+![Img](ghi/app/public/sales-by-salesperson-view.png)
 
 Add a Sale
 
-ghi/app/public/create-a-sale.png
+![Img](ghi/app/public/create-a-sale.png)
 
 
 Endpoints for GET | POST | DELETE :
