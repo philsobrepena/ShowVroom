@@ -68,7 +68,6 @@ function NewSaleForm() {
       const updateData = {
       ...automobile,
       sold: true,
-
     }
     ////// put request to update automobile data
     const updateOptions = {

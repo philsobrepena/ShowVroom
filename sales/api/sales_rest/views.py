@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404
 from common.json import ModelEncoder
 from .models import SalesPerson, Customer, Sale, AutomobileVO
 import json

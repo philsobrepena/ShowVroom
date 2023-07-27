@@ -23,7 +23,7 @@ function ModelsList() {
                 <tr>
                     <th>name</th>
                     <th>manufacturer</th>
-                    <th>picture_url</th>
+                    <th>picture</th>
                 </tr>
             </thead>
             <tbody>

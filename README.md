@@ -4,7 +4,8 @@ Working Name CarCar is an application for managing the logistics of a car dealer
 
 Team:
 
-Hung Hoang - Automobile Service
+Hung Hoang - Automobile Service,
+
 Phil Sobrepena - Automobile Sales
 
 ## Diagram & Design
@@ -21,9 +22,6 @@ Below is a diagram of their relationship to one another.
 
 
 ## Service microservice
-
-Explain your models and integration with the inventory
-microservice, here.
 
 Approach: I will create the django models in service_rest, create the necessary Value Objects (VO)
 Services interacts with the inventory microservice and database to populate the web page with relevant data. This includes appointments, technicians, and  Automobile/VIN data.
@@ -188,7 +186,7 @@ Create a sale	                POST	http://localhost:8090/api/sales/
 Delete a sale	                DELETE	http://localhost:8090/api/sales/:id/
 
 
-### Inventory API (Optional)
+### Inventory API
 
 The Inventory API contains 3 Models which are used by both Services and Sales APIs
 

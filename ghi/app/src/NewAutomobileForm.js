@@ -8,7 +8,6 @@ function NewAutomobileForm(){
     const [models, setModels] = useState([]);
     const [hasSignedUp, setHasSignedUp] = useState(false);
 
-    /// models dropdown, is this how it should work?
     const fetchData = async () => {
         const response = await fetch('http://localhost:8100/api/models/')
         if (response.ok){
