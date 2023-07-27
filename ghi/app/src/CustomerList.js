@@ -7,7 +7,7 @@ function CustomerList() {
         const response = await fetch('http://localhost:8090/api/customers/');
         if (response.ok) {
             const data = await response.json();
-            console.log(data.customers);
+            // console.log(data.customers);
             setCustomers(data.customers);
         }
     };

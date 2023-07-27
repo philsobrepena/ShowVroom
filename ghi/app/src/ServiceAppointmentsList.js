@@ -11,7 +11,7 @@ function AppointmentsList(){
             const autoData = await response.json();
             setAutos(autoData.automobiles);
             
-            console.log("fetch automobiles", autoData);
+            // console.log("fetch automobiles", autoData);
         }
         else{
             console.error(response);
@@ -23,7 +23,7 @@ function AppointmentsList(){
             const apptData = await response.json();
             // console.log("fetch appointments", data);
             const inProgress = apptData.appointments.filter(appt => appt.status==="in progress")
-            console.log('inProgress', inProgress);
+            // console.log('inProgress', inProgress);
             setAppointments(inProgress)
         }
     }
@@ -102,7 +102,7 @@ function AppointmentsList(){
                             <td>{appointment.reason}</td>
                             <td>{appointment.status}</td>
                             <td><button name="finish"  onClick={() => handleFinish(`${appointment.id}`)}>Finish?</button></td>
-                            <td><button name="cancel"  onClick={() => handleCancel(`${appointment.id}`)}>Cancel??</button></td>
+                            <td><button name="cancel"  onClick={() => handleCancel(`${appointment.id}`)}>Cancel?</button></td>
                         </tr>
                     )
                 })}

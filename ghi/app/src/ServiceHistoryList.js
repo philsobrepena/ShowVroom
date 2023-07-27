@@ -48,7 +48,7 @@ function HistoryList(){
     const submit = async (event) =>{
         event.preventDefault();
         const response = await fetch('http://localhost:8080/api/appointments/');
-        console.log(response);
+        // console.log(response);
         if (response.ok){
             const data = await response.json();
             let search_list = [];
