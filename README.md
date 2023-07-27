@@ -9,9 +9,7 @@ Phil Sobrepena - Automobile Sales
 
 CarCar is an application that contains 3 microservices that integrate with each other.
 
-Inventory
-Services
-Sales
+Inventory | Services | Sales
 
 Below is a diagram of their relationship to one another.
 
@@ -202,19 +200,75 @@ In order for an Automobile to be created, a VehicleModel must be created, and in
 
 If objects are not created in this order, the create forms cannot be properly filled out.
 
-Here is a diagram simplifying that relationship.
-
 | Manufacturer -> VehicleModel -> Automobile |
 
-end of diagram.
 
-The Sales and Service APIS require Automobile data in order to process their requests. Data from Automobiles in the Inventory are sent to each microservice every 60 seconds through a poller.
+The Sales and Service APIs require Automobile data in order to process their requests. Data from Automobiles in the Inventory are sent to each microservice every 60 seconds through a poller.
+
+
+Below are examples of the list and create pages for the Inventory API
+
+List Manufacturers:
+
+ghi/app/public/list-manufacturers.png
+
+Create a Manufacturer:
+
+ghi/app/public/create-a-manufacturer.png
+
+List Models:
+
+ghi/app/public/list-models.png
+
+Create a Model:
+
+ghi/app/public/create-a-model.png
+
+List Automobiles:
+
+ghi/app/public/list-automobiles.png
+
+Create an Automobile:
+
+ghi/app/public/create-an-automobile.png
 
 
 ### Service API
  - Put Service API documentation here
 
 ### Sales API
+
+The Sales API allows the user to view lists and create objects.
+
+The Customers View
+
+ghi/app/public/customers-view.png
+
+Add a Customer
+
+ghi/app/public/add-a-customer.png
+
+The Salespeople View
+
+ghi/app/public/salespeople-view.png
+
+Add a Salesperson
+
+ghi/app/public/add-a-salesperson.png
+
+The Sales View
+
+ghi/app/public/sales-view.png
+
+Sales by Salesperson View
+
+ghi/app/public/sales-by-salesperson-view.png
+
+Add a Sale
+
+ghi/app/public/create-a-sale.png
+
+
 Endpoints for GET | POST | DELETE :
 
 **NOTE** delete requests require "/<id>" added to the end of the request path.
@@ -231,15 +285,61 @@ below is an example for a customer POST request (create a customer) with the pro
 	"phone_number": "4154154155"
 }
 
+here is an example of a customer GET response with the proper json format:
+
+{
+	"customers": [
+		{
+			"first_name": "Frank",
+			"last_name": "Stein",
+			"address": "123 Sesame Street",
+			"phone_number": "4154154154",
+			"id": 1
+		},
+		{
+			"first_name": "Frankie",
+			"last_name": "Steinberger",
+			"address": "1234 Sesame Street",
+			"phone_number": "4154154155",
+			"id": 3
+		}
+	]
+}
+
 salespeople:
 http://localhost:8090/api/salespeople/
 
-below is an example for a saleperson POST request (create a salesperson) with the proper json format:
+below is an example for a salespeople POST request (create a salesperson) with the proper json format:
 
 {
 	"first_name": "Frank",
 	"last_name": "Stein",
 	"employee_id": "2"
+}
+
+here is an example for a salepeople GET response with the proper json format:
+
+{
+	"salespeople": [
+		{
+			"id": 1,
+			"first_name": "Phil",
+			"last_name": "Sobrepena",
+			"employee_id": 1
+		},
+		{
+			"id": 3,
+			"first_name": "John",
+			"last_name": "Johnson",
+			"employee_id": 4
+		},
+		{
+			"id": 4,
+			"first_name": "Jill",
+			"last_name": "Jillson",
+			"employee_id": 123
+		}
+	]
 }
 
 sales:
@@ -252,6 +352,52 @@ below is an example for a sales POST request (create a sale) with the proper jso
 	"salesperson": 1,
 	"customer": 3,
 	"price": "10000"
+}
+
+here is an example of a sales GET response with the proper json format:
+{
+	"sales": [
+		{
+			"automobile": {
+				"vin": "1C3CC5FB2AN120174",
+				"sold": true
+			},
+			"salesperson": {
+				"first_name": "Phil",
+				"last_name": "Sobrepena",
+				"employee_id": 1
+			},
+			"customer": {
+				"first_name": "Frankie",
+				"last_name": "Steinberger",
+				"address": "1234 Sesame Street",
+				"phone_number": "4154154155",
+				"id": 3
+			},
+			"price": 10000,
+			"id": 5
+		},
+		{
+			"automobile": {
+				"vin": "2D4CC5FB2AN120222",
+				"sold": true
+			},
+			"salesperson": {
+				"first_name": "Phil",
+				"last_name": "Sobrepena",
+				"employee_id": 1
+			},
+			"customer": {
+				"first_name": "Frank",
+				"last_name": "Stein",
+				"address": "123 Sesame Street",
+				"phone_number": "4154154154",
+				"id": 1
+			},
+			"price": 20000,
+			"id": 6
+		}
+	]
 }
 
 
