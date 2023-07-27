@@ -15,7 +15,7 @@ function HistoryList(){
             const autoData = await response.json();
             setAutos(autoData.automobiles);
             
-            console.log("fetch automobiles", autoData);
+            // console.log("fetch automobiles", autoData);
         }
         else{
             console.error(response);
