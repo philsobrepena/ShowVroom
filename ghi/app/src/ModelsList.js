@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-
+import './index.css';
 function ModelsList() {
     const [models, setVehicles] = useState([]);
 
