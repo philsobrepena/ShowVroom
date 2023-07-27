@@ -102,7 +102,7 @@ function AppointmentsList(){
                             <td>{appointment.reason}</td>
                             <td>{appointment.status}</td>
                             <td><button name="finish"  onClick={() => handleFinish(`${appointment.id}`)}>Finish?</button></td>
-                            <td><button name="cancel"  onClick={() => handleCancel(`${appointment.id}`)}>Cancel??</button></td>
+                            <td><button name="cancel"  onClick={() => handleCancel(`${appointment.id}`)}>Cancel?</button></td>
                         </tr>
                     )
                 })}
