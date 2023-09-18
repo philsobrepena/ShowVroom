@@ -1,5 +1,5 @@
-# CarCar
-Working Name CarCar is an application for managing the logistics of a car dealership. Inventory, sales, and services are managed within this application.
+# ShowVroom
+An application for managing the logistics of a car dealership. Inventory, sales, and services are managed within this application.
 
 
 Team:
@@ -10,7 +10,7 @@ Phil Sobrepena - Automobile Sales
 
 ## Diagram & Design
 
-CarCar is an application that contains 3 microservices that integrate with each other.
+ShowVroom is an application that contains 3 microservices that integrate with each other.
 
 Inventory | Services | Sales
 
